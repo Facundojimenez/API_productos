@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1637695166556,
+    "productos": [
+      {
+        "id": 1,
+        "title": "prod X"
+      },
+      {
+        "id": 2,
+        "title": "prod Y"
+      },
+      {
+        "title": "PRODUCTO A",
+        "price": 123.45,
+        "thumbnail": "http://openclipart.org/image/800px/svg_to_png/87397/Cyrillic_A.png",
+        "id": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "timestamp": 1637695167517,
+    "productos": [
+      {
+        "id": 1,
+        "title": "prod X"
+      },
+      {
+        "id": 2,
+        "title": "prod Y"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "timestamp": 1637695168115,
+    "productos": [
+      {
+        "id": 1,
+        "title": "prod X"
+      },
+      {
+        "id": 2,
+        "title": "prod Y"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "timestamp": 1637695168665,
+    "productos": [
+      {
+        "id": 1,
+        "title": "prod X"
+      },
+      {
+        "id": 2,
+        "title": "prod Y"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "timestamp": 1637696242144,
+    "productos": [
+      {
+        "id": 1,
+        "title": "prod X",
+        "description": "esta es una descripcion",
+        "SKU": "PRODX",
+        "thumbnail": "www.aaa.com",
+        "precio": 100,
+        "stock": 4
+      },
+      {
+        "id": 2,
+        "title": "prod Y"
+      }
+    ]
+  }
+]
