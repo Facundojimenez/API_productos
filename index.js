@@ -7,7 +7,7 @@ const Contenedor = require("./contenedor")
 
 const ContenedorProd = new Contenedor("./productos.txt");
 const app = express();
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 /// --- Handlebars config ---
 

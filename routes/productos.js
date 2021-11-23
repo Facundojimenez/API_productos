@@ -57,7 +57,6 @@ router.put("/:id", async (req, res) => {
     res.json(respuesta);
 })
 
-
 router.delete("/:id", async (req, res) =>{
     if(!req.query || req.query.admin !== "true"){
         const errorMsj = {
