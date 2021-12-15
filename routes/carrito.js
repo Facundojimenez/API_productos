@@ -1,6 +1,6 @@
 const express = require("express");
 const {Router} = express;
-const Contenedor = require("../contenedor");
+const Contenedor = require("../contenedores/contenedorArchivo");
 const router = Router();
 
 router.use(express.json());

@@ -48,7 +48,7 @@ module.exports = class Contenedor {
 
     async getAll(){
         const data = await fs.promises.readFile(this.path, "utf-8");
-        const elementos =  JSON.parse(data);
+        const elementos = JSON.parse(data);
         return elementos;
     }
     async deleteById(_id){
