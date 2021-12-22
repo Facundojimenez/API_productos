@@ -23,7 +23,7 @@ class ProductosDaoFirebase extends ContenedorFirebase {
     }
 
     async actualizarProducto(_elemento){
-        const res = await this.updateById(_elemento.id, _elemento);
+        const res = await this.updateById(_elemento);
         return res;
     }
 

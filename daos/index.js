@@ -2,28 +2,38 @@ let productosDao,
     carritosDao;
 
 
+const ProductosDaosFirebase = require("./productosDaosFirebase");
+const CarritosDaosFirebase = require("./carritosDaosFirebase");
+const ProductosDaosMongoDB = require("./productosDaosMongoDB");
+const CarritosDaosMongoDB = require("./carritosDaosMongoDB");
+const ProductosDaosArchivo = require("./productosDaosArchivo");
+const CarritosDaosArchivo = require("./carritosDaosArchivo");
+
+console.log("modo: " + process.env.MODO_PERSISTENCIA)
+
 switch(process.env.MODO_PERSISTENCIA){
     case "firebase":
-        const { default: ProductosDaosFirebase } = await import("./productosDaosFirebase");
-        const { default: CarritosDaosFirebase } = await import("./carritosDaosFirebase");
-
+        
         productosDao = new ProductosDaosFirebase();
         carritosDao = new CarritosDaosFirebase();
+
         break;
 
     case "mongodb":
-        const { default: ProductosDaosMongo } = await import("./productosDaosMongoDB");
-        const { default: CarritosDaosMongo } = await import("./carritosDaosMongoDB");
 
-        productosDao = new ProductosDaosMongo();
-        carritosDao = new CarritosDaosMongo();
+        productosDao = new ProductosDaosMongoDB();
+        carritosDao = new CarritosDaosMongoDB();
         break;
     
     case "archivo":
-        const { default: ProductosDaosArchivo } = await import("./productosDaosArchivo");
-        const { default: CarritosDaosArchivo } = await import("./carritosDaosArchivo");
 
         productosDao = new ProductosDaosArchivo();
         carritosDao = new CarritosDaosArchivo();
         break;
+}
+
+
+module.exports = { 
+    productosDao,
+    carritosDao
 }

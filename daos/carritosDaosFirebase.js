@@ -23,7 +23,7 @@ class CarritosDaoFirebase extends ContenedorFirebase {
     }
 
     async actualizarCarrito(_carrito){
-        const res = await this.updateById(_carrito.id, _carrito);
+        const res = await this.updateById(_carrito);
         return res;
     }
 

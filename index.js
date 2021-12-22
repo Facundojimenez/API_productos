@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const productosRoutes = require("./routes/productos");
 const carritosRoutes = require("./routes/carrito");
 
@@ -23,6 +24,10 @@ const ContenedorFirebaseCarritos = new CarritosDaosFirebase();
 const ContenedorMongoCarritos = new CarritosDaosMongo();
 const ContenedorArchivoCarritos = new CarritosDaosArchivo();
 
+const ContenedorCarritosGenerico = require("./daos/index").carritosDao;
+const ContenedorProductosGenerico = require("./daos/index").productosDao;
+
+
 
 /// --- EJS config ---
 
@@ -42,15 +47,21 @@ app.get("/", async (req, res) => {
 
     
     const productoUpdateMongo = {
+        id: "61afedce163c1bd7f845cad2",
         title: "producto nuevooo update",
-        price: 350,
-        id: "61afedce163c1bd7f845cad2"
+        price: 350
     }
 
     const productoNuevo = {
+        id: 5,
         title: "producto nuevooo2",
-        price: 350,
-        id: 5
+        price: 350
+    }
+
+    const productoUpdateFirebase = {
+        id: "mVS68FU0AETX1nUyNxpB",
+        title: "producto nuevooo3",
+        price: 500
     }
 
     const carritoNuevo = {
@@ -62,7 +73,26 @@ app.get("/", async (req, res) => {
                 description: "esta es una descripcion",
                 SKU: "PRODX",
                 thumbnail: "www.aaa.com",
-                precio: 100,
+                precio: 10330,
+                stock: 4
+            },
+            {
+                id: 2,
+                title: "prod yyyy"
+            }
+        ]
+    }
+
+    const carritoUpdateFirebase = {
+        id: "26sl1j9QqrKJwfRAGF55",
+        products: [
+            {
+                id: 1,
+                title: "prod X",
+                description: "esta es una descripcion",
+                SKU: "PRODX",
+                thumbnail: "www.aaa.com",
+                precio: 10330,
                 stock: 4
             },
             {
@@ -94,41 +124,8 @@ app.get("/", async (req, res) => {
     
     
     let respuesta;
-
-    //test del DAO de mongoDB
-
-    // respuesta = await ContenedorMongoCarritos.listarCarritos();
-    // respuesta = await ContenedorMongoProductos.listarProductos();
-    
-    // respuesta = await ContenedorMongoCarritos.obtenerCarritoPorId("61af7259cd8ba257bf1570a1");
-    // respuesta = await ContenedorMongoProductos.obtenerProductoPorId("61afedc9163c1bd7f845cac0");
-    
-    // respuesta = await ContenedorMongoCarritos.guardarCarrito(carritoNuevo);
-    // respuesta = await ContenedorMongoProductos.guardarProducto(productoNuevo);
-    
-    // respuesta = await ContenedorMongoCarritos.guardarCarrito(carritoUpdateMongo);
-    // respuesta = await ContenedorMongoProductos.actualizarProducto(productoUpdateMongo);
-    
-    // respuesta = await ContenedorMongoCarritos.eliminarCarritoPorId("61af7259cd8ba257bf1570a1");
-    // respuesta = await ContenedorMongoProductos.eliminarProductoPorId("61afedc9163c1bd7f845cac0");
-    
-
-    //tests del DAO de productos
-
-    // respuesta = await ContenedorArchivoCarritos.listarCarritos();
-    // respuesta = await ContenedorArchivoProductos.listarProductos();
-    
-    // respuesta = await ContenedorArchivoCarritos.obtenerCarritoPorId(2);
-    // respuesta = await ContenedorArchivoProductos.obtenerProductoPorId(20);
-    
-    // respuesta = await ContenedorArchivoCarritos.guardarCarrito(carritoNuevo);
-    // respuesta = await ContenedorArchivoProductos.guardarProducto(productoNuevo);
-    
-    // respuesta = await ContenedorArchivoCarritos.actualizarCarrito(carritoNuevo);
-    // respuesta = await ContenedorArchivoProductos.actualizarProducto(productoNuevo);
-    
-    // respuesta = await ContenedorArchivoCarritos.eliminarCarritoPorId(6);
-    // respuesta = await ContenedorArchivoProductos.eliminarProductoPorId(41);
+    // respuesta = await ContenedorCarritosGenerico.listarCarritos();
+    respuesta = await ContenedorProductosGenerico.listarProductos();
 
 
     console.log(respuesta)

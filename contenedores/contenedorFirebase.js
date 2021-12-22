@@ -28,8 +28,7 @@ module.exports = class ContenedorFirebase{
 
 	async save(_elemento){
 
-		const doc = await this.collection.create(_elemento);
-
+		const doc = await this.collection.add(_elemento);
 		return doc;
 	}
 	
@@ -55,13 +54,14 @@ module.exports = class ContenedorFirebase{
 
 	async deleteById(_id){
 		try{
-			const doc = await this.collection.doc(_id).get();
-			if(!doc.exists){
+			const doc = await this.collection.doc(_id);
+			if(!await (await doc.get()).exists){
 				return "No se encontró el elemento";
 			}
 			return await doc.delete();
 		}
 		catch(err){
+			console.log(err)
 			return {};
 		}
 	}
