@@ -1,5 +1,6 @@
 const express = require("express");
 require('dotenv').config();
+const faker = require("faker");
 const productosRoutes = require("./routes/productos");
 const carritosRoutes = require("./routes/carrito");
 
@@ -124,7 +125,6 @@ app.get("/", async (req, res) => {
     
     
     let respuesta;
-    // respuesta = await ContenedorCarritosGenerico.listarCarritos();
     respuesta = await ContenedorProductosGenerico.listarProductos();
 
 
@@ -134,11 +134,28 @@ app.get("/", async (req, res) => {
     return respuesta;
 });
 
+///esta ruta accede a la DB
 app.get("/productos", async (req, res) => {
-    const productos = await ContenedorProd.getAll();
+    const productos = await ContenedorProductosGenerico.listarProductos();
     res.render("index", {seccion: "productos", data: productos});
 });
 
+
+///esta ruta es de productos mock
+app.get("/productos-test", async (req, res) => {
+    const productos = [];
+    for(let i = 0; i < 5; i++){
+        productos.push({
+            title: faker.commerce.productName(),
+            price: faker.commerce.price(),
+            thumbnail: faker.random.image(),
+        })
+    }
+    console.log(productos)
+
+    // const productos = await ContenedorProd.getAll();
+    res.render("index", {seccion: "productos", data: productos});
+});
 
 /// --- Inicio del server
 
